@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../features/userSlice";
 
 const Login = () => {
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -28,17 +28,17 @@ const Login = () => {
             username: formData.username,
             password: formData.password,
           })
-          .then(response => {
+          .then((response) => {
             dispatch(login(response.data));
           });
 
         navigate("/home");
       } else {
-        setError('Please fill all required fields');
+        setError("Please fill all required fields");
       }
     } catch (err) {
       console.log(`Error is ${err}`);
-      setError('Server error ')
+      setError("Server error ");
     }
   };
   return (
@@ -85,7 +85,7 @@ const Login = () => {
         </div>
         <div className="w-full flex justify-center">
           <p>
-            Don&apos;t have account?{" "}
+            Don't have account?{" "}
             <Link to="/register" className="text-primary font-semibold">
               {" "}
               Sign Up
