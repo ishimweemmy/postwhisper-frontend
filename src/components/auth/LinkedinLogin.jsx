@@ -12,7 +12,7 @@ function LinkedinLogin() {
         {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${data}`,
+            Authorization: `Bearer ${data.code}`,
           },
         }
       );
@@ -27,7 +27,7 @@ function LinkedinLogin() {
     <div className="w-full">
       <LinkedIn
         clientId="77e4t6z5k9k8mv"
-        redirectUri="https://postwhisper-frontend.vercel.app"
+        redirectUri="http://localhost:5173"
         state="attgpYvAzS8aEwsf"
         onSuccess={handleLinkedInSuccess}
         onError={(error) => {
