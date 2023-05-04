@@ -32,7 +32,7 @@ const Login = () => {
             dispatch(login(response.data));
           });
 
-        navigate("/");
+        navigate("/home");
       } else {
         setError('Please fill all required fields');
       }
