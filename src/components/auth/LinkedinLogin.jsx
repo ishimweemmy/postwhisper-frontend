@@ -65,7 +65,7 @@ function LinkedinLogin() {
     <div className="w-1/2">
       <LinkedIn
         clientId="77e4t6z5k9k8mv"
-        redirectUri="http://postwhisper-frontend.vercel.app"
+        redirectUri="https://postwhisper-frontend.vercel.app"
         state={"attgpYvAzS8aEwsf"}
         onSuccess={handleLinkedInSuccess}
         onError={(error) => {
