@@ -32,7 +32,7 @@ const Login = () => {
             dispatch(login(response.data));
           });
 
-        navigate("/home");
+        navigate("/");
       } else {
         setError("Please fill all required fields");
       }
@@ -44,9 +44,8 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center px-20 py-8 sm:px-10 pt-40 w-2/3 mx-auto">
       <div
-        className={`bg-white shadow-md w-1/3 space-y-12 p-6 ${
-          error && "space-y-[12px]"
-        } sm:w-full sm:px-12 sm:border md:w-3/4 lg:w-3/4 xl:w-3/4 `}
+        className={`bg-white shadow-md w-1/3 space-y-12 p-6 ${error && "space-y-[12px]"
+          } sm:w-full sm:px-12 sm:border md:w-3/4 lg:w-3/4 xl:w-3/4 `}
       >
         {error && (
           <div className="flex w-full justify-center text-primary text-2xl">

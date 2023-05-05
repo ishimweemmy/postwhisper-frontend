@@ -38,7 +38,7 @@ function App() {
             path="/register"
             element={!userToken ? <Signup /> : <Navigate to={"/"} />}
           />
-          <Route path="/account" element={<Account />} />
+          <Route path="/account" element={userToken ? <Account /> : <Navigate to="/login" />} />
 
           <Route path="*" element={<Notfound />} />
         </Routes>

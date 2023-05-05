@@ -106,6 +106,12 @@ const Account = () => {
             "No profile picture available"
           )}
         </div>
+        <button
+          className={`w-[80%] h-[2.3rem] ${user.accessToken ? "bg-green-500" : "bg-[#ff0000bd]"}`}
+          type="button"
+        >
+          {user.accessToken ? "connected to your linkedin account" : "connect to linkedin account"}
+        </button>
       </div>
       <form
         onSubmit={handlePost}
@@ -118,7 +124,7 @@ const Account = () => {
           cols="30"
           rows="50"
           className="w-[80%] h-[10rem] border p-2 text-gray-500 outline-none"
-          disabled={user.accessToken == undefined ? true : false}
+          disabled={!user.accessToken ? true : false}
           onChange={handleChange}
         ></textarea>
         <button className="w-[80%] h-[2.3rem] bg-[#00ffffb7]">
