@@ -68,13 +68,13 @@ const Account = () => {
   };
 
   const fetchLatestPosts = async (accessToken) => {
+    console.log(user.profilePic)
     const response = await fetch(
       `${corsProxyUrl}https://api.linkedin.com/v2/shares?q=owners&owners=urn:li:person:${user.id}&count=4`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          "cache-control": "no-cache",
-          "X-Restli-Protocol-Version": "2.0.0",
+          "Content-Type": "application/json",
         },
       }
     );
@@ -89,7 +89,6 @@ const Account = () => {
     }
 
     const { elements } = await response.json();
-    console.log(elements);
     setUserPosts(elements);
     return elements;
   };
@@ -128,7 +127,7 @@ const Account = () => {
         <button
           className="w-[80%] h-[2.3rem] bg-[#00ffffb7]"
           type="button"
-          onClick={fetchLatestPosts}
+          onClick={() => fetchLatestPosts(user.accessToken)}
         >
           Get latest posts
         </button>

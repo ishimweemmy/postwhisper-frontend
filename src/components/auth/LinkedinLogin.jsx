@@ -3,11 +3,12 @@ import linkedin from "react-linkedin-login-oauth2/assets/linkedin.png";
 import { useDispatch } from "react-redux";
 import { linkedinAuth } from "../../features/userSlice";
 import { toast } from "react-toastify";
+import { useCallback } from "react";
 
 function LinkedinLogin() {
   const dispatch = useDispatch();
 
-  const handleLinkedInSuccess = async (data) => {
+  const handleLinkedInSuccess = useCallback(async (data) => {
     try {
       const corsProxyUrl = "https://cors-anywhere.herokuapp.com/";
 
@@ -18,7 +19,7 @@ function LinkedinLogin() {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: `grant_type=authorization_code&code=${data}&redirect_uri=${"http://localhost:5173"}&client_id=${"77e4t6z5k9k8mv"}&client_secret=${"attgpYvAzS8aEwsf"}`,
+          body: `grant_type=authorization_code&code=${data}&redirect_uri=${"http://localhost:5173/linkedin"}&client_id=${"77e4t6z5k9k8mv"}&client_secret=${"attgpYvAzS8aEwsf"}`,
         }
       );
 
@@ -57,15 +58,14 @@ function LinkedinLogin() {
       toast.error("linkedin server has failed. Try again later!", {
         position: toast.POSITION.TOP_RIGHT,
       });
-      console.log(error);
     }
-  };
+  }, [])
 
   return (
     <div className="w-1/2">
       <LinkedIn
         clientId="77e4t6z5k9k8mv"
-        redirectUri="https://postwhisper-frontend.vercel.app"
+        redirectUri="http://localhost:5173/linkedin"
         state={"attgpYvAzS8aEwsf"}
         onSuccess={handleLinkedInSuccess}
         onError={(error) => {
