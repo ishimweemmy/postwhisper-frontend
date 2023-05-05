@@ -2,7 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   token: "",
+  firstName: "",
+  lastName: "",
+  profilePic: "",
+  id: "",
+  accessToken: "",
 };
+
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -14,7 +20,15 @@ const userSlice = createSlice({
     logout: (state, { payload }) => {
       state.token = "";
     },
+
+    linkedinAuth: (state, { payload }) => {
+      state.firstName = payload.firstName;
+      state.lastName = payload.lastName;
+      state.profilePic = payload.profilePic;
+      state.id = payload.id;
+      state.accessToken = payload.accessToken;
+    },
   },
 });
 export default userSlice.reducer;
-export const { signup, login, logout } = userSlice.actions;
+export const { signup, login, logout, linkedinAuth } = userSlice.actions;

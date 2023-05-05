@@ -13,6 +13,9 @@ import Notfound from "./pages/Nofound/Notfound";
 import { useSelector } from "react-redux";
 import Account from "./pages/account/Account";
 import { LinkedInCallback } from "react-linkedin-login-oauth2";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const user = useSelector((state) => state.user.token);
@@ -20,6 +23,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <Router>
         <Routes>
           <Route path="/" element={<LinkedInCallback />} />
@@ -35,7 +39,7 @@ function App() {
             path="/register"
             element={!user ? <Signup /> : <Navigate to={"/home"} />}
           />
-          <Route path="/account" element={!user ? <Signup /> : <Account />} />
+          <Route path="/account" element={<Account />} />
 
           <Route path="*" element={<Notfound />} />
         </Routes>
